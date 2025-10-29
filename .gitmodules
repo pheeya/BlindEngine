@@ -1,0 +1,18 @@
+[submodule "vendor/glfw"]
+	path = vendor/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "vendor/glad"]
+	path = vendor/glad
+	url = https://github.com/pheeya/glad_cmake.git
+[submodule "vendor/cglm"]
+	path = vendor/cglm
+	url = https://github.com/recp/cglm.git
+[submodule "vendor/cgltf"]
+	path = vendor/cgltf
+	url = https://github.com/pheeya/cgltf.git
+[submodule "lib/blindgui"]
+	path = lib/blindgui
+	url = https://github.com/pheeya/blindgui.git
+[submodule "vendor/logc"]
+	path = vendor/logc
+	url = https://github.com/rxi/log.c.git
