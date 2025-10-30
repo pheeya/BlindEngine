@@ -1,53 +1,37 @@
 #include "system.h"
-#include <stdlib.h>
 #include <be_assert.h>
 
+void system_register(BeSystemsRegistry *_registry,
+                     BeSystemFunction _systemFunc, BeSystemsTarget _target) {
+  switch (_target) {
+  case SYSTEMS_TARGET_STARTUP: {
 
-void system_register(systems_registry_t *_registry, system_function_pointer_t _systemFunc, systems_target_t _target)
-{
-    switch (_target)
-    {
-    case SYSTEMS_TARGET_STARTUP:
-    {
+    list_add(_registry->startup_list, _systemFunc);
+    break;
+  }
+  }
+}
 
-        list_add(_registry->startup_list, _systemFunc);
-        break;
-    }
-    case SYSTEMS_TARGET_FIRST:
-    {
+void system_register_timed(BeSystemsRegistry *_registry,
+                           BeSystemTimedFunction _systemFunc,
+                           BeSystemsTarget _target) {
+  switch (_target)
 
-        list_add(_registry->first_list, _systemFunc);
-        break;
-    }
-    case SYSTEMS_TARGET_PRE_UPDATE:
-    {
+  {
+  case SYSTEMS_TARGET_UPDATE: {
 
-        list_add(_registry->pre_update_list, _systemFunc);
-        break;
-    }
-    case SYSTEMS_TARGET_UPDATE:
-    {
+    list_add(_registry->update_list, _systemFunc);
+    break;
+  }
+  case SYSTEMS_TARGET_RENDERER_UPDATE: {
 
-        list_add(_registry->update_list, _systemFunc);
-        break;
-    }
-    case SYSTEMS_TARGET_POST_UPDATE:
-    {
+    list_add(_registry->renderer_update_list, _systemFunc);
+    break;
+  }
+  case SYSTEMS_TARGET_FIXED_UPDATE: {
 
-        list_add(_registry->post_update_list, _systemFunc);
-        break;
-    }
-    case SYSTEMS_TARGET_RENDERER_UPDATE:
-    {
-
-        list_add(_registry->renderer_update_list, _systemFunc);
-        break;
-    }
-    case SYSTEMS_TARGET_FIXED_UPDATE:
-    {
-
-        list_add(_registry->fixed_update_list, _systemFunc);
-        break;
-    }
-    }
+    list_add(_registry->fixed_update_list, _systemFunc);
+    break;
+  }
+  };
 }

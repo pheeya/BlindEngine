@@ -7,23 +7,20 @@
 
 
 
-typedef uint8_t systems_target_t;
+typedef uint8_t BeSystemsTarget;
 
 
 // compile time constants to make them work with switch statements
 #define SYSTEMS_TARGET_STARTUP  0
-#define SYSTEMS_TARGET_FIRST  1
-#define SYSTEMS_TARGET_PRE_UPDATE  2
-#define SYSTEMS_TARGET_UPDATE  3
-#define SYSTEMS_TARGET_POST_UPDATE  4
-#define SYSTEMS_TARGET_RENDERER_UPDATE  5
-#define SYSTEMS_TARGET_FIXED_UPDATE  6
+#define SYSTEMS_TARGET_UPDATE  1
+#define SYSTEMS_TARGET_RENDERER_UPDATE  2
+#define SYSTEMS_TARGET_FIXED_UPDATE  3
  
 
 
 
-void system_register(systems_registry_t *_registry, system_function_pointer_t _systemFunc, systems_target_t _target);
-
+void system_register(BeSystemsRegistry *_registry, BeSystemFunction _systemFunc, BeSystemsTarget _target);
+void system_register_timed(BeSystemsRegistry *_registry, BeSystemTimedFunction _systemFunc, BeSystemsTarget _target);
 
 
 

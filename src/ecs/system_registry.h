@@ -14,9 +14,9 @@ typedef struct
     list_t *post_update_list;
     list_t *renderer_update_list;
     list_t *fixed_update_list;
-} systems_registry_t;
+} BeSystemsRegistry;
 
-systems_registry_t* system_registry_create();
+BeSystemsRegistry* system_registry_create();
 
 
 #endif

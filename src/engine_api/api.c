@@ -6,7 +6,7 @@ component_id_t COMPONENT_TRANSFORM;
 component_id_t COMPONENT_MODEL;
 component_id_t COMPONENT_CAMERA;
 
-void engine_register_system(engine_t *engine, systems_target_t _target, system_function_pointer_t _system)
+void engine_register_system(engine_t *engine, BeSystemsTarget _target, BeSystemFunction _system)
 {
     system_register(engine->SystemRegistry, _system, _target);
 }

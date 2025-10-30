@@ -28,7 +28,7 @@
 #include <components/component_list.h>
 #include <components/transform/transform.h>
 #include <renderer/model/model.h>
-void engine_register_system(engine_t *engine, systems_target_t _target, system_function_pointer_t _system);
+void engine_register_system(engine_t *engine, BeSystemsTarget _target, BeSystemFunction _system);
 
 void engine_register_default_components(engine_t *engine);
 

@@ -1,4 +1,4 @@
-#include <systems/window.h>
+#include <window/window.h>
 #include <stdlib.h>
 #include <be_assert.h>
 #include <glad/glad.h>
