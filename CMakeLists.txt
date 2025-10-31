@@ -92,6 +92,8 @@ src/systems/testsystem/testsystem.c
 src/font/Font.h
 src/font/Font.c
 
+src/event/event.h
+src/event/event.c
 
 )
 
