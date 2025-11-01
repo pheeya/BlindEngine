@@ -17,6 +17,6 @@ void renderer_init(engine_t* _engine);
 void renderer_render_model(model_t * _model);
 
 void renderer_submit_model(model_t* _model);
-void renderer_render_cameras(engine_t* _engine);
+void renderer_render_cameras(engine_t* _engine, float _dt, float _unscaledDt);
 
 #endif

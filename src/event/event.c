@@ -30,5 +30,4 @@ be_list_append(listeners,_listener);
 }
 
 void be_event_remove_listener(struct BeEventDispatcher *_dispatcher, uint16_t _eventId, BeEventListener _listener){
-
 }

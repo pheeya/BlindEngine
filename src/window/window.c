@@ -68,11 +68,10 @@ void window_set_close_callback(window_t *win, window_close_callback_t _cb)
     glfwSetWindowCloseCallback(win->glfwWindow, onglfw_window_close);
 }
 
-void window_before_render(engine_t *_engine)
-{
+
+void window_update(engine_t* _engine, float _dt, float _unscaledDt){
+glfwPollEvents();
 }
-void window_post_render(engine_t *_engine)
-{
-    glfwSwapBuffers(glfwGetCurrentContext());
-    glfwPollEvents();
+void window_render(engine_t* _engine, float _dt, float _unscaledDt){
+glfwSwapBuffers(glfwGetCurrentContext());
 }

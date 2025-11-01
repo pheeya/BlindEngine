@@ -7,10 +7,9 @@
 typedef struct
 {
     bool running;
-    entity_registry_t *EntityRegistry;
-    component_registry_t *ComponentRegistry;
-    BeSystemsRegistry *SystemRegistry;
-
+    entity_registry_t *entityRegistry;
+    component_registry_t *componentRegistry;
+    BeSystemsRegistry *systemRegistry;
 } engine_t;
 
 

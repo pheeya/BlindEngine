@@ -5,7 +5,6 @@
 #include <ecs/component.h>
 #include <engine/engine.h>
 #include <renderer/model/surface/shader.h>
-#include <types/list/list.h>
 static list_t *m_renderModels;
 static shader_t *m_defaultShader;
 
@@ -37,7 +36,7 @@ void render_all(engine_t *_engine, camera_t *_cam){
 
   // model components
   component_pool_t *pool =
-      component_registry_get_pool(_engine->ComponentRegistry, COMPONENT_MODEL);
+      component_registry_get_pool(_engine->componentRegistry, COMPONENT_MODEL);
 
   for (int i = 0; i < pool->set->dataPages.count; i++) {
 
@@ -51,13 +50,13 @@ void render_all(engine_t *_engine, camera_t *_cam){
   }
 
 }
-void renderer_render_cameras(engine_t *_engine) {
+void renderer_render_cameras(engine_t *_engine, float _dt, float _unscaledDt) {
 
   glPolygonMode(GL_FRONT_AND_BACK, GL_TRIANGLES);
   glClear(GL_COLOR_BUFFER_BIT);
   glClearColor(.1f, .1f, .1f, 1);
   component_pool_t *cameraPool =
-      component_registry_get_pool(_engine->ComponentRegistry, COMPONENT_CAMERA);
+      component_registry_get_pool(_engine->componentRegistry, COMPONENT_CAMERA);
 
   for (int i = 0; i < cameraPool->set->dataPages.count; i++) {
     camera_t *cameraArray =

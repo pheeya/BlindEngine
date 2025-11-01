@@ -21,8 +21,8 @@ window_t *window_create(void* owner);
 void window_terminate(window_t* win);
 bool window_should_close(window_t *_window);
 
-void window_before_render(engine_t *_engine);
-void window_post_render(engine_t *_engine);
-
 void window_set_close_callback(window_t *win, window_close_callback_t _cb);
+
+void window_update(engine_t* _engine, float _dt, float _unscaledDt);
+void window_render(engine_t* _engine, float _dt, float _unscaledDt);
 #endif
