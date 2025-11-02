@@ -1,4 +1,4 @@
-#include <types/sparse_set/sparse_set.h>
+#include <sparse_set/sparse_set.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -49,7 +49,7 @@ void *sparse_set_get(sparse_set_t *_set, uint32_t _index)
     uint32_t dataPageRelativeIndex = get_page_relative_index(_set->dataPages.pageSize, dataPageAbsIndex);
     data_page_t *dataPage = _set->dataPages.pagePointers[dataPageNum];
 
-    return &dataPage->content[dataPageRelativeIndex];
+    return dataPage->content+dataPageRelativeIndex;
 }
 bool sparse_set_exists(sparse_set_t *_set, uint32_t _index)
 {
@@ -72,7 +72,7 @@ bool sparse_set_exists(sparse_set_t *_set, uint32_t _index)
     {
         return false;
     }
-    uint32_t denseIndex = page->content[relativeIndex];
+    //uint32_t denseIndex = page->content[relativeIndex];
     return page->content[relativeIndex] != _set->nullValue;
 }
 

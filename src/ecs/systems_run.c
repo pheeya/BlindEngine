@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include <ecs/systems_run.h>
 #include <ecs/system_function_pointer.h>
 #include "systems_run.h"

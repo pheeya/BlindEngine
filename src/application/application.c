@@ -9,5 +9,5 @@ application_t *application_create(BeLogger* _appLogger)
     ASSERT_MALLOC(app);
     engine_t *engine = engine_create(_appLogger);
     app->engine = engine;
-    return app;
+ return app;
 }

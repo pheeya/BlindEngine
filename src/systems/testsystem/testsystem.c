@@ -40,7 +40,7 @@ void ts_first(engine_t *engine)
     printf("total entities: %d\n", engine_get_entity_count(engine));
 
     model_t *model = engine_add_component(engine, COMPONENT_MODEL, Player);
-    component_pool_t *reg = component_registry_get_pool(engine->ComponentRegistry, COMPONENT_MODEL);
+    component_pool_t *reg = component_registry_get_pool(engine->componentRegistry, COMPONENT_MODEL);
 
     model_load_gltf_preallocated("../assets/models/susan.glb", model);
 

@@ -1,1 +1,3 @@
-cmake --build build
+@echo off
+cmake --build build/release
+cmake --build build/debug

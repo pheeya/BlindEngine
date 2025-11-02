@@ -97,6 +97,8 @@ src/font/Font.c
 src/event/event.h
 src/event/event.c
 
+src/logger/logger.h
+src/logger/logger.c
 )
 
 
