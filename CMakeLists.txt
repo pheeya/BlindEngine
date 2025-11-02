@@ -4,7 +4,9 @@ project(BLIND_ENGINE)
 
 
 # source
-
+# I think adding .h files helps ides be able to find them
+# so people can search the .h files using their ide features
+# or auto include them in source files etc
 add_library(${PROJECT_NAME} STATIC
 src/main.c
 
@@ -114,8 +116,11 @@ add_subdirectory(vendor/cgltf)
 add_subdirectory(lib/blindgui)
 add_subdirectory(vendor/stbi)
 add_subdirectory(vendor/freetype)
+add_subdirectory(vendor/logc)
+
+
 # Link library to our project 
-target_link_libraries(BLIND_ENGINE PUBLIC glfw glad cglm cgltf blindgui stbi freetype)
+target_link_libraries(BLIND_ENGINE PUBLIC glfw glad cglm cgltf blindgui stbi freetype logc)
 
 
 # Directory of header files

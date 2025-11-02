@@ -2,8 +2,13 @@
 #include <ecs/systems_run.h>
 #include <engine/engine.h>
 
-engine_t *engine_create() {
+engine_t *engine_create(BeLogger *_appLogger) {
   engine_t *engine = malloc(sizeof(engine_t));
+  engine->appLogger = _appLogger;
+
+  BeLogger *engineLogger = malloc(sizeof(BeLogger));
+  engineLogger->prefix = "be";
+  engine->engineLogger = engineLogger;
   ASSERT_MALLOC(engine);
 
   entity_registry_t *EntityRegistry = entity_registry_create(25);

@@ -12,7 +12,7 @@ typedef struct
 
 
 
-application_t* application_create();
+application_t* application_create(BeLogger* _appLogger);
 
 
 #endif

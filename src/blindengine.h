@@ -28,6 +28,7 @@
 #include <components/component_list.h>
 #include <components/transform/transform.h>
 #include <renderer/model/model.h>
+#include <logger/logger.h>
 void be_register_startup(engine_t *engine, BeSystemFunction _system);
 void be_register_update(engine_t *engine, BeSystemTimedFunction _system);
 void be_register_fixed_update(engine_t *engine, BeSystemTimedFunction _system);
