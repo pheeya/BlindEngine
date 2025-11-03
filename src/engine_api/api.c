@@ -6,16 +6,16 @@ component_id_t COMPONENT_MODEL;
 component_id_t COMPONENT_CAMERA;
 
 void be_register_startup(engine_t *engine, BeSystemFunction _system) {
-  system_register_startup(engine->systemRegistry, _system);
+  system_register_startup(engine, _system);
 }
 void be_register_update(engine_t *engine, BeSystemTimedFunction _system) {
-  system_register_update(engine->systemRegistry, _system);
+  system_register_update(engine, _system);
 }
 void be_register_fixed_update(engine_t *engine, BeSystemTimedFunction _system) {
-  system_register_fixed_update(engine->systemRegistry, _system);
+  system_register_fixed_update(engine, _system);
 }
 void be_register_render(engine_t *engine, BeSystemTimedFunction _system) {
-  system_register_render(engine->systemRegistry, _system);
+  system_register_render(engine, _system);
 }
 
 void engine_register_default_components(engine_t *engine) {

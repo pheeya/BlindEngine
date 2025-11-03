@@ -1,17 +1,16 @@
 #include "system.h"
 #include <be_assert.h>
-
-void system_register_startup(BeSystemsRegistry *_registry, BeSystemFunction _systemFunc){
-be_list_append(_registry->startup_list, _systemFunc);
+void system_register_startup(engine_t* _engine, BeSystemFunction _systemFunc){
+be_list_append(_engine->systemRegistry->startup_list, &_systemFunc);
 }
-void system_register_update(BeSystemsRegistry *_registry, BeSystemTimedFunction _systemFunc){
-be_list_append(_registry->update_list, _systemFunc);
+void system_register_update(engine_t* _engine, BeSystemTimedFunction _systemFunc){
+be_list_append(_engine->systemRegistry->update_list, &_systemFunc);
 }
-void system_register_render(BeSystemsRegistry *_registry, BeSystemTimedFunction _systemFunc){
-be_list_append(_registry->renderer_update_list, _systemFunc);
+void system_register_render(engine_t* _engine, BeSystemTimedFunction _systemFunc){
+be_list_append(_engine->systemRegistry->renderer_update_list, &_systemFunc);
 }
-void system_register_fixed_update(BeSystemsRegistry *_registry, BeSystemTimedFunction _systemFunc){
-be_list_append(_registry->fixed_update_list,_systemFunc);
+void system_register_fixed_update(engine_t* _engine, BeSystemTimedFunction _systemFunc){
+be_list_append(_engine->systemRegistry->fixed_update_list,&_systemFunc);
 }
 
 

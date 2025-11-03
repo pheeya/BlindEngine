@@ -1,43 +1,45 @@
-#include <ecs/systems_run.h>
-#include <ecs/system_function_pointer.h>
 #include "systems_run.h"
+#include <ecs/system_function_pointer.h>
+#include <ecs/systems_run.h>
 
-void systems_run_startup(engine_t *_engine)
-{
-    BeSystemsRegistry *_registry = _engine->systemRegistry;
-    for (int i = 0; i < _registry->startup_list->count; i++)
-    {
-        BeSystemFunction func = (BeSystemFunction )be_list_get_at(_registry->startup_list, i);
-        func(_engine);
-    }
+void systems_run_startup(engine_t *_engine) {
+  BeSystemsRegistry *_registry = _engine->systemRegistry;
+  for (int i = 0; i < _registry->startup_list->count; i++) {
+    BeSystemFunction *func =
+        (BeSystemFunction *)be_list_get_at(_registry->startup_list, i);
+    BeSystemFunction f = *func;
+
+    f(_engine);
+  }
 }
 
-void systems_run_update(engine_t *_engine, float _dt, float _unscaledDt)
-{
-    BeSystemsRegistry *_registry = _engine->systemRegistry;
-    for (int i = 0; i < _registry->update_list->count; i++)
-    {
-      BeSystemTimedFunction func = (BeSystemTimedFunction)be_list_get_at(_registry->update_list, i);
-        func(_engine, _dt, _unscaledDt);
-    }
+void systems_run_update(engine_t *_engine, float _dt, float _unscaledDt) {
+  BeSystemsRegistry *_registry = _engine->systemRegistry;
+  for (int i = 0; i < _registry->update_list->count; i++) {
+    BeSystemTimedFunction *f =
+        (BeSystemTimedFunction *)be_list_get_at(_registry->update_list, i);
+    BeSystemTimedFunction func = *f;
+
+    func(_engine, _dt, _unscaledDt);
+  }
 }
 
-
-void systems_run_renderer_update(engine_t *_engine, float _dt, float _unscaledDt)
-{
-    BeSystemsRegistry *_registry = _engine->systemRegistry;
-    for (int i = 0; i < _registry->renderer_update_list->count; i++)
-    {
-      BeSystemTimedFunction func = (BeSystemTimedFunction)be_list_get_at(_registry->update_list, i);
-        func(_engine, _dt, _unscaledDt);
-    }
+void systems_run_renderer_update(engine_t *_engine, float _dt,
+                                 float _unscaledDt) {
+  BeSystemsRegistry *_registry = _engine->systemRegistry;
+  for (int i = 0; i < _registry->renderer_update_list->count; i++) {
+    BeSystemTimedFunction *f =
+        (BeSystemTimedFunction *)be_list_get_at(_registry->update_list, i);
+    BeSystemTimedFunction func = *f;
+    func(_engine, _dt, _unscaledDt);
+  }
 }
-void systems_run_fixed_update(engine_t *_engine, float _dt, float _unscaledDt)
-{
-    BeSystemsRegistry *_registry = _engine->systemRegistry;
-    for (int i = 0; i < _registry->fixed_update_list->count; i++)
-    {
-      BeSystemTimedFunction func = (BeSystemTimedFunction)be_list_get_at(_registry->update_list, i);
-        func(_engine, _dt, _unscaledDt);
-    }
+void systems_run_fixed_update(engine_t *_engine, float _dt, float _unscaledDt) {
+  BeSystemsRegistry *_registry = _engine->systemRegistry;
+  for (int i = 0; i < _registry->fixed_update_list->count; i++) {
+    BeSystemTimedFunction *f =
+        (BeSystemTimedFunction *)be_list_get_at(_registry->update_list, i);
+    BeSystemTimedFunction func = *f;
+    func(_engine, _dt, _unscaledDt);
+  }
 }

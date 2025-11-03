@@ -70,8 +70,10 @@ void window_set_close_callback(window_t *win, window_close_callback_t _cb)
 
 
 void window_update(engine_t* _engine, float _dt, float _unscaledDt){
+be_log(_engine->engineLogger, BE_LOG_INFO,"polling window events");
 glfwPollEvents();
 }
 void window_render(engine_t* _engine, float _dt, float _unscaledDt){
+be_log(_engine->engineLogger, BE_LOG_INFO,"swapping buffers");
 glfwSwapBuffers(glfwGetCurrentContext());
 }

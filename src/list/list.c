@@ -127,10 +127,11 @@ void *be_list_append(BeList *_to, void *_data) {
   }
   uint8_t *location = _to->data + _to->stride * _to->count;
   memcpy(location, _data, _to->stride);
-  return location;
+ _to->count++;
+ return location;
 }
 
-void *be_list_get_at(BeList *_from, size_t _at) { return &_from->data[_at]; }
+void *be_list_get_at(BeList *_from, size_t _at) { return _from->data+_at*_from->stride; }
 
 void be_list_free(BeList *_list) {
   free(_list->data);

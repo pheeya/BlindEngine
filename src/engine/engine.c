@@ -27,10 +27,7 @@ void engine_stop(engine_t *engine) { engine->running = false; }
 
 void engine_run(engine_t *engine) {
   engine->running = true;
-  be_log(engine->engineLogger, BE_LOG_INFO, "Running startup systems..");
   systems_run_startup(engine);
-  be_log(engine->engineLogger, BE_LOG_INFO,
-         "Finished running startup systems..");
   while (engine->running) {
     systems_run_update(engine, -1, -1);
     systems_run_renderer_update(engine, -1, -1);
