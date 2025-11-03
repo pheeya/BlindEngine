@@ -29,7 +29,7 @@ void systems_run_renderer_update(engine_t *_engine, float _dt,
   BeSystemsRegistry *_registry = _engine->systemRegistry;
   for (int i = 0; i < _registry->renderer_update_list->count; i++) {
     BeSystemTimedFunction *f =
-        (BeSystemTimedFunction *)be_list_get_at(_registry->update_list, i);
+        (BeSystemTimedFunction *)be_list_get_at(_registry->renderer_update_list, i);
     BeSystemTimedFunction func = *f;
     func(_engine, _dt, _unscaledDt);
   }
@@ -38,7 +38,7 @@ void systems_run_fixed_update(engine_t *_engine, float _dt, float _unscaledDt) {
   BeSystemsRegistry *_registry = _engine->systemRegistry;
   for (int i = 0; i < _registry->fixed_update_list->count; i++) {
     BeSystemTimedFunction *f =
-        (BeSystemTimedFunction *)be_list_get_at(_registry->update_list, i);
+        (BeSystemTimedFunction *)be_list_get_at(_registry->fixed_update_list, i);
     BeSystemTimedFunction func = *f;
     func(_engine, _dt, _unscaledDt);
   }
