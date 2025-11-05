@@ -1,3 +1,5 @@
+## Reminder for what i was last doing
+- reworking the code so that sub systems like renderer and window don't take engine as argument and instead take only what they need as argument such as logger and BeRenderer
 ## TODO 
 
 - Check if all BeEngine fields are initialized in engine_create
@@ -5,6 +7,8 @@
 - Remove unnecessary asserts on malloc and read about calloc 
 - Complete engine api so that user only interacts through it in almost all cases
 - Add "be_list_ensure_unique" function and use it to ensure no duplicate events are registered
+- Check all compiler warnings, we might be using invalid pointer after calls to realloc in some places
+- Renderer should render frame buffers, not cameras. This way we can just pass frame buffers to the renderer instead to decouple it from the camera.
 
 
 ## Architecture

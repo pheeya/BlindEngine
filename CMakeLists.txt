@@ -31,8 +31,8 @@ src/engine/engine.c
 src/blindengine.h
 src/engine_api/api.c
 
-src/renderer/rendererSystem.h
-src/renderer/rendererSystem.c
+src/renderer/renderer.h
+src/renderer/renderer.c
 
 src/ecs/entity.h
 src/ecs/entity.c

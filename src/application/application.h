@@ -6,7 +6,7 @@
 #include <engine/engine.h>
 typedef struct
 {
-    engine_t* engine;
+    BeEngine* engine;
 } application_t;
 
 

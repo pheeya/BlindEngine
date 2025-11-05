@@ -2,8 +2,8 @@
 #include <ecs/systems_run.h>
 #include <engine/engine.h>
 
-engine_t *engine_create(BeLogger *_appLogger) {
-  engine_t *engine = malloc(sizeof(engine_t));
+BeEngine *engine_create(BeLogger *_appLogger) {
+  BeEngine *engine = malloc(sizeof(BeEngine));
   engine->appLogger = _appLogger;
 
   BeLogger *engineLogger = malloc(sizeof(BeLogger));
@@ -23,9 +23,9 @@ engine_t *engine_create(BeLogger *_appLogger) {
   return engine;
 }
 
-void engine_stop(engine_t *engine) { engine->running = false; }
+void engine_stop(BeEngine *engine) { engine->running = false; }
 
-void engine_run(engine_t *engine) {
+void engine_run(BeEngine *engine) {
   engine->running = true;
   systems_run_startup(engine);
   while (engine->running) {

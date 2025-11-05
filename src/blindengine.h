@@ -24,28 +24,31 @@
 #include <ecs/system_function_pointer.h>
 #include <application/application.h>
 #include <window/window.h>
-#include <renderer/rendererSystem.h>
+#include <renderer/renderer.h>
 #include <components/component_list.h>
 #include <components/transform/transform.h>
 #include <renderer/model/model.h>
 #include <logger/logger.h>
-void be_register_startup(engine_t *engine, BeSystemFunction _system);
-void be_register_update(engine_t *engine, BeSystemTimedFunction _system);
-void be_register_fixed_update(engine_t *engine, BeSystemTimedFunction _system);
-void be_register_render(engine_t *engine, BeSystemTimedFunction _system);
+void be_register_startup(BeEngine *engine, BeSystemFunction _system);
+void be_register_update(BeEngine *engine, BeSystemTimedFunction _system);
+void be_register_fixed_update(BeEngine *engine, BeSystemTimedFunction _system);
+void be_register_render(BeEngine *engine, BeSystemTimedFunction _system);
 
-void engine_register_default_components(engine_t *engine);
+void engine_register_default_components(BeEngine *engine);
 
-component_id_t engine_register_component(engine_t *engine, void *_prototype, size_t _size);
+void be_sys_renderer_create(BeEngine* _engine);
 
-entity_t engine_create_entity(engine_t *engine);
+// ecs
+ComponentId engine_register_component(BeEngine *engine, void *_prototype, size_t _size);
 
-void *engine_add_component(engine_t *engine, component_id_t _component, entity_t _to);
+entity_t engine_create_entity(BeEngine *engine);
 
-bool engine_remove_component(engine_t *engine, component_id_t _component, entity_t _from);
-bool engine_has_component(engine_t *engine, component_id_t _component, entity_t entity);
+void *engine_add_component(BeEngine *engine, ComponentId _component, entity_t _to);
 
-uint32_t engine_get_component_count(engine_t *engine, component_id_t _component);
-uint32_t engine_get_entity_count(engine_t *engine);
+bool engine_remove_component(BeEngine *engine, ComponentId _component, entity_t _from);
+bool engine_has_component(BeEngine *engine, ComponentId _component, entity_t entity);
+
+uint32_t engine_get_component_count(BeEngine *engine, ComponentId _component);
+uint32_t engine_get_entity_count(BeEngine *engine);
 
 #endif

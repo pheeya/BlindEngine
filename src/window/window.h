@@ -6,23 +6,23 @@
 #include <stdbool.h>
 #include <engine/engine.h>
 
-typedef struct window_t window_t;
+struct BeWindow;
 
-typedef void (*window_close_callback_t)(window_t *window);
-typedef struct window_t
+typedef void (*BeWindowCloseCallback)(struct BeWindow *window);
+struct BeWindow
 {
     GLFWwindow *glfwWindow;
-    window_close_callback_t window_close_callback;
+    BeWindowCloseCallback window_close_callback;
     void* owner;
 
-} window_t;
+};
 
-window_t *window_create(void* owner);
-void window_terminate(window_t* win);
-bool window_should_close(window_t *_window);
+struct BeWindow *window_create(void* owner);
+void window_terminate(struct BeWindow* win);
+bool window_should_close(struct BeWindow *_window);
 
-void window_set_close_callback(window_t *win, window_close_callback_t _cb);
+void window_set_close_callback(struct BeWindow *win, BeWindowCloseCallback _cb);
 
-void window_update(engine_t* _engine, float _dt, float _unscaledDt);
-void window_render(engine_t* _engine, float _dt, float _unscaledDt);
+void window_update(BeEngine* _engine, float _dt, float _unscaledDt);
+void window_render(BeEngine* _engine, float _dt, float _unscaledDt);
 #endif

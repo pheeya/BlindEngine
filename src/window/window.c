@@ -1,12 +1,11 @@
-#include "window.h"
+#include <window/window.h>
 #include <GLFW/glfw3.h>
 #include <be_assert.h>
 #include <glad/glad.h>
 #include <stdlib.h>
-#include <window/window.h>
 
 void onglfw_window_close(GLFWwindow *glfw) {
-  window_t *win = (window_t *)glfwGetWindowUserPointer(glfw);
+  struct BeWindow *win = (struct BeWindow *)glfwGetWindowUserPointer(glfw);
   if (win == NULL) {
     printf("Couldn't find window associated with glfw window\n");
     exit(1);
@@ -14,8 +13,8 @@ void onglfw_window_close(GLFWwindow *glfw) {
 
   win->window_close_callback(win);
 }
-window_t *window_create(void *owner) {
-  window_t *win = malloc(sizeof(window_t));
+struct BeWindow *window_create(void *owner) {
+  struct BeWindow *win = malloc(sizeof(struct BeWindow));
   win->owner = owner;
   ASSERT_MALLOC(win);
   GLFWwindow *glfwWindow;
@@ -41,24 +40,24 @@ window_t *window_create(void *owner) {
   return win;
 }
 
-void window_terminate(window_t *win) {
+void window_terminate(struct BeWindow *win) {
   glfwTerminate();
 
   free(win);
 }
 
-bool window_should_close(window_t *_window) {
+bool window_should_close(struct BeWindow *_window) {
   return glfwWindowShouldClose(_window->glfwWindow);
 }
 
-void window_set_close_callback(window_t *win, window_close_callback_t _cb) {
+void window_set_close_callback(struct BeWindow *win, BeWindowCloseCallback _cb) {
   win->window_close_callback = _cb;
   glfwSetWindowCloseCallback(win->glfwWindow, onglfw_window_close);
 }
 
-void window_update(engine_t *_engine, float _dt, float _unscaledDt) {
+void window_update(BeEngine *_engine, float _dt, float _unscaledDt) {
   glfwPollEvents();
 }
-void window_render(engine_t *_engine, float _dt, float _unscaledDt) {
+void window_render(BeEngine *_engine, float _dt, float _unscaledDt) {
   glfwSwapBuffers(glfwGetCurrentContext());
 }

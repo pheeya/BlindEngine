@@ -1,22 +1,14 @@
-#include "rendererSystem.h"
+#include "renderer.h"
 #include <GLFW/glfw3.h>
 #include <components/camera.h>
 #include <components/component_list.h>
 #include <ecs/component.h>
-#include <engine/engine.h>
 #include <renderer/model/surface/shader.h>
-static list_t *m_renderModels;
-static shader_t *m_defaultShader;
 
-void renderer_init(engine_t *_engine) {
-  m_defaultShader = shader_load_from_file("../assets/shaders/Test");
-  m_renderModels = list_create_dynamic(sizeof(model_t *), 50, true);
-}
-
-void renderer_render_model(model_t *_model) {
+void renderer_render_model(struct BeRenderer* _renderer,model_t *_model) {
 
   for (int i = 0; i < _model->mesh_count; i++) {
-    shader_bind(m_defaultShader);
+    shader_bind(_renderer->defaultShader);
 
     glBindVertexArray(_model->buffers[i].vao);
     glDrawElements(GL_TRIANGLES, _model->meshes[i].trisCount, GL_UNSIGNED_INT,
@@ -25,13 +17,13 @@ void renderer_render_model(model_t *_model) {
     // glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
   }
 }
-void render_all(engine_t *_engine, camera_t *_cam){
+void render_all(struct BeRenderer *_renderer, camera_t *_cam){
 
   // submitted models
-  for (int i = 0; i < m_renderModels->count; i++) {
-    model_t **_pointer = (model_t **)list_getAt(m_renderModels, i);
+  for (int i = 0; i < _renderer->renderList->count; i++) {
+    model_t **_pointer = (model_t **)be_list_get_at(_renderer->renderList, i);
     model_t *_model = *_pointer;
-    renderer_render_model(_model);
+    renderer_render_model(_renderer,_model);
   }
 
   // model components
@@ -45,12 +37,12 @@ void render_all(engine_t *_engine, camera_t *_cam){
     for (int j = 0; j < pool->set->dataPages.pagePointers[i]->count; j++) {
       model_t *model = dataArray + j;
 
-      renderer_render_model(model);
+      renderer_render_model(_engine,model);
     }
   }
 
 }
-void renderer_render_cameras(engine_t *_engine, float _dt, float _unscaledDt) {
+void renderer_render_frames(BeEngine *_engine, float _dt, float _unscaledDt) {
 
   glPolygonMode(GL_FRONT_AND_BACK, GL_TRIANGLES);
   glClear(GL_COLOR_BUFFER_BIT);
@@ -72,12 +64,12 @@ void renderer_render_cameras(engine_t *_engine, float _dt, float _unscaledDt) {
 }
 
 
-void renderer_clear_submitted_models() { list_clear(m_renderModels); }
+void renderer_clear_submitted_models(struct BeRenderer* _renderer) { be_list_clear(_renderer->renderList); }
 
 /// @brief Submit models to render manually without using the model component.
 /// Use with caution - expects pointer stability. Otherwise clear the list and
 /// provide fresh pointers.
 /// @param _model
-void renderer_submit_model(model_t *_model) {
+void renderer_submit_model(engine_t* _engine,model_t *_model) {
   list_add(m_renderModels, &_model);
 }

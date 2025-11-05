@@ -10,7 +10,7 @@
 
 static unsigned char *m_roboto_font_buffer;
 
-void ts_startup(engine_t *engine)
+void ts_startup(BeEngine *engine)
 {
     stbtt_fontinfo m_robotFont;
     FILE *file = fopen("../assets/fonts/roboto/Roboto-Regular.ttf", "rb");
@@ -30,7 +30,7 @@ void ts_startup(engine_t *engine)
     printf("Font loaded: %d\n", fontLoadStatus);
 }
 
-void ts_first(engine_t *engine)
+void ts_first(BeEngine *engine)
 {
     entity_t Player = engine_create_entity(engine);
 
@@ -53,11 +53,11 @@ void ts_first(engine_t *engine)
     printf("player has model: %d\n", playerHasComponent);
 }
 
-void ts_update(engine_t *engine)
+void ts_update(BeEngine *engine)
 {
 }
 
-void ts_post_update(engine_t *engine)
+void ts_post_update(BeEngine *engine)
 {
 }
 

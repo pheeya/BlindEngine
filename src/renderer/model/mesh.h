@@ -9,7 +9,7 @@
 typedef struct {
 vertex_t* vertices;
 triangle_t* triangles;
-shader_t* shader;
+BeShader* shader;
 size_t vertCount;
 size_t trisCount;
 

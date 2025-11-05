@@ -5,6 +5,9 @@
 #include <ecs/system_registry.h>
 #include <stdbool.h>
 #include <logger/logger.h>
+
+
+
 typedef struct
 {
     bool running;
@@ -13,18 +16,19 @@ typedef struct
     BeSystemsRegistry *systemRegistry;
     BeLogger* engineLogger;
     BeLogger* appLogger;
-} engine_t;
+    struct BeRenderer* renderer;
+} BeEngine;
 
 
 
-extern engine_t App;
+extern BeEngine App;
 
 
 
-engine_t *engine_create(BeLogger* _appLogger);
+BeEngine *engine_create(BeLogger* _appLogger);
 
-void engine_run(engine_t* engine);
-void engine_stop(engine_t* engine);
+void engine_run(BeEngine* engine);
+void engine_stop(BeEngine* engine);
 
 
 

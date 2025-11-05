@@ -14,12 +14,12 @@ typedef struct
 {
     gpu_id_t id;
     const char* filePath;
-} shader_t;
+} BeShader;
 
 /// @brief Load shader from file
 /// @param _pathWithoutExt Path to file without file extension
 /// @return 
-shader_t *shader_load_from_file(const char *_pathWithoutExt);
-void shader_bind(shader_t *_shader);
+BeShader *shader_load_from_file(const char *_pathWithoutExt);
+void shader_bind(BeShader *_shader);
 void shader_unbind();
 #endif

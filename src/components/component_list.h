@@ -3,8 +3,8 @@
 
 #include <ecs/component.h>
 
-extern component_id_t COMPONENT_TRANSFORM;
-extern component_id_t COMPONENT_MODEL;
-extern component_id_t COMPONENT_CAMERA;
+extern ComponentId COMPONENT_TRANSFORM;
+extern ComponentId COMPONENT_MODEL;
+extern ComponentId COMPONENT_CAMERA;
 
 #endif 

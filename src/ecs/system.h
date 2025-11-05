@@ -8,10 +8,10 @@
 
 
 
-void system_register_startup(engine_t* _engine, BeSystemFunction _systemFunc);
-void system_register_update(engine_t *_registry, BeSystemTimedFunction _systemFunc);
-void system_register_render(engine_t *_registry, BeSystemTimedFunction _systemFunc);
-void system_register_fixed_update(engine_t *_registry, BeSystemTimedFunction _systemFunc);
+void system_register_startup(BeEngine* _engine, BeSystemFunction _systemFunc);
+void system_register_update(BeEngine *_registry, BeSystemTimedFunction _systemFunc);
+void system_register_render(BeEngine *_registry, BeSystemTimedFunction _systemFunc);
+void system_register_fixed_update(BeEngine *_registry, BeSystemTimedFunction _systemFunc);
 
 
 

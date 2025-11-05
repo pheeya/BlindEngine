@@ -5,8 +5,8 @@
 
 
 
-void ts_startup(engine_t* engine);
-void ts_first(engine_t* engine);
-void ts_update(engine_t* engine);
-void ts_post_update(engine_t* engine);
+void ts_startup(BeEngine* engine);
+void ts_first(BeEngine* engine);
+void ts_update(BeEngine* engine);
+void ts_post_update(BeEngine* engine);
 

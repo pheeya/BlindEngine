@@ -14,7 +14,7 @@
 #include <components/component_list.h>
 #include <systems/testsystem/testsystem.h>
 #include <renderer/model/model.h>
-#include <renderer/rendererSystem.h>
+#include <renderer/renderer.h>
 #include <freetype/ftcache.h>
 
 
