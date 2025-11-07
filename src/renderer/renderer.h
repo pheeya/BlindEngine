@@ -9,17 +9,18 @@
 #include <list/list.h>
 
 struct BeRenderer{
-BeList* renderList;
+model_t* renderList;
+model_t* volatileList;
+uint32_t lengthRenderList;
+uint32_t lengthVolatileList;
 BeShader* defaultShader;
-BeList* frames;
-
 };
 
 
 void be_render_model(struct BeRenderer* _renderer,model_t * _model);
 
-void renderer_submit_model(struct BeRenderer* _engine,model_t* _model);
-void renderer_render_frames(struct BeRenderer* _engine, float _dt, float _unscaledDt);
+void renderer_submit_model(struct BeRenderer* _renderer,model_t* _model);
+void renderer_sys_render_all(struct BeRenderer* _renderer, float _dt, float _unscaledDt);
 
 
 

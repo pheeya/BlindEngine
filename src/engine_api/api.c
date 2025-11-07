@@ -22,6 +22,7 @@ struct BeRenderer* renderer = malloc(sizeof(struct BeRenderer));
 
   renderer->defaultShader= shader_load_from_file("../assets/shaders/Test");
   renderer->renderList = be_list_create(64,sizeof(model_t *));
+_engine->renderer = renderer;
 }
 
 
