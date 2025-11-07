@@ -1,5 +1,6 @@
 ## Reminder for what i was last doing
 - reworking the code so that sub systems like renderer and window don't take engine as argument and instead take only what they need as argument such as logger and BeRenderer
+- reworking engine so it takes raw pointer array. I'm doing this while considering making all the engine's sub systems independent modules, in which case the blindengine itself would just be the central coordinating system that puts all the subsystems together. This way people can use any part of the engine in their own engine without committing to blindengine's framework
 ## TODO 
 
 - Check if all BeEngine fields are initialized in engine_create
